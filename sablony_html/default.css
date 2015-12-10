@@ -1,0 +1,44 @@
+.footer
+{
+    background: darkgreen url("../img/v.svg");
+    color: white;
+    border-radius: 2pt;
+}
+.pMenu
+{
+    color:#000;
+    background-color:#f1f1f1 !important
+}
+
+.pMenu, a
+{
+    color: darkgreen;
+}
+
+.pMenu, a :focus
+{
+    color: yellow;
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+
+    opacity: 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
+}
+.btn{
+    color:#fff;
+    background-color:#5cb85c;
+    border-color:#4cae4c
+}

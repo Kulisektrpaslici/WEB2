@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="default.css"/>
+
+</head>
+<!-- start kodu -->
+<form class="form-horizontal" method="POST" action="../kontrolery/pridatPrispevek.php" enctype="multipart/form-data">
+    <label class="col-sm-3 control-label">Lokomotiva číslo:</label>
+        <input type="text" class="form-control" name="znak" placeholder="Znaceni" required value="">
+    </div>
+    <div class="form-group">
+        <label for="prispevek">Příspěvek</label>
+        <textarea class="form-control" id="prispevek" name="comment" placeholder="Text"></textarea> <!-- row?? -->
+    </div>
+        Select image to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload">
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-10">
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>Odeslat </button>
+        </div>
+    </div>
+</form>
