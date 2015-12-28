@@ -13,7 +13,7 @@ else
     echo 'Připojení proběhlo úspěšně ' . $mysqli->host_info . "galerie <br />";
 
 
-$dotaz = "SELECT * FROM loko_navstevnik_prispevek";
+$dotaz = "SELECT * FROM loko_navstevnik_prispevek WHERE schvaleno = 1";
 $vysledek = $mysqli->query($dotaz);
 
     if ($vysledek->num_rows > 0)
@@ -29,9 +29,9 @@ $vysledek = $mysqli->query($dotaz);
             // echo "<br> id: " . $radek["Lokomotiva_cislo_loko"] . " - Text: " . $radek["prispevek"] . " " . $radek["foto"] . "<br>";
         }
     }
-else
-{
-    echo "Nemáme zádné příspěvky";
-}
+    else
+    {
+        echo "Nemáme zádné příspěvky";
+    }
 
 $mysqli->close();}

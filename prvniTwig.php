@@ -1,14 +1,18 @@
 <?php
 session_start();
-$key = "user";
-if (isset($_SESSION[$key]))
+$user = "user";
+$prihlasen = false;
+if (isset($_SESSION[$user]))
 {
-    // ano, existuje
+    echo " uzivatel: " . $_SESSION["user"] . " prihlasen, admin - " . $_SESSION["admin"] . "<br > ";
+    $prihlasen = true;
+    print_r($_SESSION);
 }
 else
 {
-    // ne, neexistuje, musim ho zalozit
-    $_SESSION[$key] = array();
+    $prihlasen =  false;
+    echo "uzivatel neprihlasen";
+   // $_SESSION[$user] = array(); //TODO nutne?
 }
         require_once 'vendor\autoload.php';
 
@@ -23,11 +27,29 @@ $twig = new Twig_Environment($loader);
 $page = $_REQUEST["page"];
 if ($page == "") $page = "hlavniStranka";
 echo "$page <br />";
-$povolene_stranky = array("index", "kontakt", "onas", "hlavniStranka", "galerie", "tabulka", "cenik", "postranniMenu", "prihlaseni", "registrace");
+if($prihlasen)
+{
+    if($_SESSION["admin"] == 1)
+    {
+        $povolene_stranky = array("index", "kontakt", "onas", "hlavniStranka", "galerie", "tabulka", "cenik", "postranniMenu", "prihlaseni", "registrace", "odhlasit", "novyPrispevek", "kontrolaPrispevku");
+    }
+    else
+    {
+        $povolene_stranky = array("index", "kontakt", "onas", "hlavniStranka", "galerie", "tabulka", "cenik", "postranniMenu", "prihlaseni", "registrace", "odhlasit", "novyPrispevek");
+    }
+}
+else
+{
+    $povolene_stranky = array("index", "kontakt", "onas", "hlavniStranka", "galerie", "tabulka", "cenik", "postranniMenu", "prihlaseni", "registrace");
+}
 
 if (!in_array($page, $povolene_stranky))
 {
-    echo 'pristupujete na stranku ktera neexistuje';
+   // echo 'pristupujete na stranku ktera neexistuje';
+    $template = $twig->loadTemplate("404.html");
+    $param["param"] = "param";
+    echo $template->render($param); //TODO bez parametru?
+    //TODO do 404 nacpat obrazek ve spravne velikosti pres css
     exit;
 }
 
@@ -50,9 +72,11 @@ function phpWrapperFromFile($filename)
 $vystup = phpWrapperFromFile($filename);
 $obsah = $vystup;
 
-/* vypln wrapper */
+
 $template = $twig->loadTemplate("index.html");
 $template_params = array();
+$template_params["admin"] =  $_SESSION["admin"];
+$template_params["prihlasen"] =  $prihlasen;
 $template_params["obsah"] = "$obsah";
 $template_params["stranka"] = "$page.html";
 echo $template->render($template_params);

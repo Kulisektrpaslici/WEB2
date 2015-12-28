@@ -1,4 +1,6 @@
 <?php
+session_start();
+require "isAdmin.php";
 /**
  * Created by PhpStorm.
  * User: Kulisek
@@ -48,8 +50,19 @@ if($uzivatel["password"] != $password)
 
 if($prihlasit)
 {
-    $_SESSION["user"]["login"] = $uresname;
+    $_SESSION["user"] = $username;
     echo "prihlasen";
-    //TODO redirect
+    $model = new isAdmin();
+    $je = $model->admin($username);
+    if($je["administrator"])
+    {
+       $_SESSION["admin"] = 1;
+    }
+    else
+    {
+        $_SESSION["admin"] = 0;
+    }
+    header("Location: ../prvniTwig.php");
+    die();
     
 }

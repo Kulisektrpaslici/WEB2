@@ -1,6 +1,9 @@
 <div class="leftmenuinner" >
     <div class="leftmenuinner pMenu" >
         <a target="_top" href="?page=novyPrispevek">Přidat příspěvek</a> <br />
-        <a target="_top" href="?page=odhlaseni">Odhlásit</a>
+        <a target="_top" href="?page=odhlasit">Odhlásit</a>
+        {% if admin == 1 %}
+        <br /><a target="_top" href="?page=kontrolaPrispevku">Příspěvky uživatelů</a>
+        {% endif %}
     </div>
 </div>

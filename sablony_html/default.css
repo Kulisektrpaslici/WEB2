@@ -37,8 +37,13 @@
     cursor: inherit;
     display: block;
 }
-.btn{
+.btn-success{
     color:#fff;
     background-color:#5cb85c;
     border-color:#4cae4c
+}
+.e404
+{
+    font-size: x-large;
+    background: white;
 }
