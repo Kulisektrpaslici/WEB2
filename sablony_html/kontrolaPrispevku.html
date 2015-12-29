@@ -6,15 +6,16 @@
         <th>Popisek</th>
         <th>Akce</th>
     </tr>
+    {{ obsah|raw }}
 
     <tr class="success">
-        <td><a>cislo lokomotivy</a></td>
+        <td><a title="Google Apps">cislo lokomotivy</a></td>
         <td>autor</td>
         <td> text popisku nebo null</td>
         <td class="column-right">
             <button class="btn btn-success">Potvrdit</button>
             <button class="btn btn-danger">Odstranit</button>
-        </td>  
+        </td>
     </tr>
 
 </table>

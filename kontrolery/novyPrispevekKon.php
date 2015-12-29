@@ -38,7 +38,7 @@ if (file_exists($target_file)) {
     //TODO prejmenovat a hodit do databaze
 }
 // jestli neni moc velikej
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 8000000) {
     echo "Tenhle obrázek je na nás moc veliký :/";
     $uploadOk = 0;
 }
@@ -88,8 +88,8 @@ else
     $cesta = $mysqli->escape_string(basename($_FILES["fileToUpload"]["name"]));
     $cesta = "img/" . $cesta;
     $znak = $mysqli->escape_string($_POST['znak']);
-
-    $dotaz = "INSERT INTO `lokorent`.`loko_navstevnik_prispevek` (`prispevek`, `foto` ,`Lokomotiva_cislo_loko` ) VALUES (' $text ', '$cesta', '$znak');";
+    $user = $_SESSION['user'];
+    $dotaz = "INSERT INTO `lokorent`.`loko_navstevnik_prispevek` (`prispevek`, `foto` ,`Lokomotiva_cislo_loko` ,`schvaleno`, `prispevek_ID_uzivatel` ) VALUES (' $text ', '$cesta', '$znak', 0, '$user');";
     echo $dotaz;
     $mysqli->query($dotaz);
     $mysqli->close();
