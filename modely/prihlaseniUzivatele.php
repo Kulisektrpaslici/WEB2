@@ -27,7 +27,7 @@ if ($mysqli->connect_error)
 }
 else
 {
-    echo 'Připojení proběhlo úspěšně ' . $mysqli->host_info . "<br />";
+    //echo 'Připojení proběhlo úspěšně ' . $mysqli->host_info . "<br />";
 }
 $username = $mysqli->escape_string($_POST['username']);
 $password = $mysqli->escape_string($_POST['password']);
@@ -42,7 +42,7 @@ if(!$uzivatel)
     $prihlasit = false;
     echo "Uzivatelské jméno je nesprávné";
 }
-if($uzivatel["password"] != $password)
+if($uzivatel["password"] != $password) //else if
 {
     $prihlasit = false;
     echo "zadavate spatne heslo";
@@ -51,7 +51,7 @@ if($uzivatel["password"] != $password)
 if($prihlasit)
 {
     $_SESSION["user"] = $username;
-    echo "prihlasen";
+   // echo "prihlasen";
     $model = new isAdmin();
     $je = $model->admin($username);
     if($je["administrator"])
@@ -62,7 +62,7 @@ if($prihlasit)
     {
         $_SESSION["admin"] = 0;
     }
-    header("Location: ../prvniTwig.php");
+    header("Location: ../index.php");
     die();
     
 }

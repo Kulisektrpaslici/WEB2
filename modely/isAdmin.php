@@ -25,7 +25,7 @@ class isAdmin
         }
         else
         {
-            echo 'Připojení proběhlo úspěšně ' . $mysqli->host_info . "<br />";
+           // echo 'Připojení proběhlo úspěšně ' . $mysqli->host_info . "<br />";
         }
 
 
